@@ -37,6 +37,12 @@ module Techplater
 
     private
       def process_node(node)
+        # In case of <div>s, recurse down
+        if node.name.to_sym == :div
+          node.children.each { |c| process_node(c) }
+          return
+        end
+
         node = strip_images(node)
 
         # When an elements consists of solely images, it will become empty after the images are stripped. In that case, skip the element to avoid unnecessary chunks.
