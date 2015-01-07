@@ -41,7 +41,7 @@ module Techplater
       def get_chunk(node)
         case node.name.to_sym
         when :h1, :h2, :h3, :h4, :h5, :h6, :p, :blockquote
-          node
+          node.to_s
         else
           nil
         end
